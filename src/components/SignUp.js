@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = (props) => {
 
     const [credentials, setcredentials] = useState({ name:"",email: "", password: "",cpassword: "" });
     let history = useHistory();
@@ -29,11 +29,12 @@ const SignUp = () => {
     {
       // Redirect
       localStorage.setItem('token',json.authtoken);
-      history.push("/")
+      props.showAlert(": Account created successfully","success");
+      history.push("/home")
     }
     else
     {
-      alert("Sorry the user already exist");
+      props.showAlert(": Sorry the user already exist","danger");
     }
     };
 
@@ -97,7 +98,9 @@ const SignUp = () => {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+    <Link className="btn btn-primary mx-2" to="/" role="button">Login</Link>
       </form>
+
     </div>
   );
 };

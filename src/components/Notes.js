@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import notecontext from "../context/notes/noteContext";
 import AddNote from "./AddNote";
 import NoteItem from "./NoteItem";
 
-function Notes() {
+function Notes(props) {
+  const {showAlert} =props
   const context = useContext(notecontext);
   const { notes, getNotes, editNote} = context;
   const [note, setnote] = useState({id:"", etitle: "", edescription: "", etag: "" });
@@ -18,8 +20,15 @@ function Notes() {
   const onChange = (e) => {
     setnote({ ...note, [e.target.name]: e.target.value });
   };
+  let history = useHistory();
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }
+    else
+    {
+      history.push('/login')
+    }
   },[]);
   const updateNote = (currentNote) => {
     ref.current.click();
@@ -109,16 +118,6 @@ function Notes() {
 
                   />
                 </div>
-                <div className="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="exampleCheck1"
-                  />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
-                    Check me out
-                  </label>
-                </div>
               </form>
             </div>
             <div className="modal-footer">
@@ -142,7 +141,7 @@ function Notes() {
         <p className="text-center my-2">{notes.length === 0 && 'No notes to display'}</p>
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} note={note} updateNote={updateNote} />
+            <NoteItem key={note._id} note={note} updateNote={updateNote} showAlert={showAlert} />
           );
         })}
       </div>

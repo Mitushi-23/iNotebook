@@ -13,7 +13,7 @@ import Alert from './components/Alert';
 import React from 'react'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import 
+import {useState} from 'react';
 
 function App() {
   const [alert, setalert] = useState(null);
@@ -28,23 +28,23 @@ function App() {
  
   return (
     <>
-    <NoteState>
+    <NoteState showAlert={showAlert}>
      <Router>
       <Navbar/>
-      <Alert/>
+      <Alert alert={alert}/>
       <div className="container">
      <Switch>
-     <Route exact path="/">
-            <Home/>
+     <Route exact path="/home">
+            <Home showAlert={showAlert}/>
           </Route>
           <Route exact path="/about">
             <About />
           </Route>
-          <Route exact path="/login">
-            <Login />
+          <Route exact path="/">
+            <Login showAlert={showAlert}/>
           </Route>
           <Route exact path="/signup">
-            <SignUp />
+            <SignUp showAlert={showAlert}/>
           </Route>
 
         </Switch>

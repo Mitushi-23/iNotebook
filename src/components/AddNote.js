@@ -1,11 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import notecontext from "../context/notes/noteContext";
+import { useHistory } from 'react-router-dom';
+
 
 const AddNote = () => {
   const context = useContext(notecontext);
   const { addNote } = context;
   const [note, setnote] = useState({ title: "", description: "", tag: "" });
-
+  let history = useHistory();
+  const location = useLocation();
+  useEffect(() => {
+   console.log(location.pathname);
+  }, [location]);
+  const handleLogout=()=>{
+    localStorage.removeItem('token');
+    history.push('/');
+  }
   const handleClick = (e) => {
       e.preventDefault();
     addNote(note.title, note.description, note.tag);
@@ -18,6 +29,7 @@ const AddNote = () => {
 
   return (
     <div className="container my-3">
+      <button className="btn btn-primary mx-2" onClick={handleLogout}>LogOut</button>
       <h2>Add Notes</h2>
       <form className="my-3">
        
@@ -64,16 +76,6 @@ const AddNote = () => {
               onChange={onChange}
             />
           </div>
-          <div className="mb-3 form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
-            />
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Check me out
-            </label>
-          </div>
           <button
           disabled={note.title.length<3 || note.description.length<8}
             type="submit"
@@ -81,6 +83,8 @@ const AddNote = () => {
             className="btn btn-primary"
           >Add Note
           </button>
+    
+
         </form>
       
     </div>

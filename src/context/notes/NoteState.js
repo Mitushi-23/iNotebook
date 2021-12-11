@@ -13,7 +13,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFiMGE3ZDJhNDgzYzhlYzU0MTI3NzFjIn0sImlhdCI6MTYzODk2NzI1MH0.tHXCEAEE7E3rjEdnJlLAOfZShpWVpYcmJ_vxMbG6AGA",
+          localStorage.getItem('token'),
       },
     });
     const json = await response.json();
@@ -28,12 +28,14 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFiMGE3ZDJhNDgzYzhlYzU0MTI3NzFjIn0sImlhdCI6MTYzODk2NzI1MH0.tHXCEAEE7E3rjEdnJlLAOfZShpWVpYcmJ_vxMbG6AGA",
+          localStorage.getItem('token'),
       },
       body: JSON.stringify({ title, description, tag }),
     });
     const note = await response.json();
     setNotes(notes.concat(note));
+    props.showAlert(": Note added successfully","success")
+
   };
 
   //Delete Note
@@ -43,7 +45,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFiMGE3ZDJhNDgzYzhlYzU0MTI3NzFjIn0sImlhdCI6MTYzODk2NzI1MH0.tHXCEAEE7E3rjEdnJlLAOfZShpWVpYcmJ_vxMbG6AGA",
+        localStorage.getItem('token'),
       },
     });
     const json = response.json();
@@ -52,7 +54,7 @@ const NoteState = (props) => {
       return note._id !== id;
     });
     setNotes(newNotes);
-    
+    props.showAlert(": Note deleted successfully","success")
   };
 
   //Edit Note
@@ -62,7 +64,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFiMGE3ZDJhNDgzYzhlYzU0MTI3NzFjIn0sImlhdCI6MTYzODk2NzI1MH0.tHXCEAEE7E3rjEdnJlLAOfZShpWVpYcmJ_vxMbG6AGA",
+          localStorage.getItem('token'),
       },
       body: JSON.stringify({ title, description, tag }),
     });
@@ -79,6 +81,8 @@ const NoteState = (props) => {
       }
     }
     setNotes(newNotes);
+    props.showAlert(": Note updated successfully","success")
+
   };
 
   return (

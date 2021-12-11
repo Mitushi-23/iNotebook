@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [credentials, setcredentials] = useState({ email: "", password: "" });
   let history = useHistory();
 
@@ -11,6 +11,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setcredentials({ email: "", password: "" });
 
     const response = await fetch("http://localhost:5000/api/auth/login", {
       method: "POST",
@@ -28,16 +29,19 @@ const Login = () => {
     {
       // Redirect
       localStorage.setItem('token',json.authtoken);
-      history.push("/")
+      props.showAlert(": Logged in successfully","success");
+      history.push("/home")
     }
     else
     {
-      alert("Invalid Credential");
+      props.showAlert(": Invalid Credential","danger");
     }
   };
   return (
+    <div className="container">
+      <h2 className="text-center my-3">Login to continue to iNotebook</h2>
     <form onSubmit={handleSubmit}>
-      <div className="mb-3">
+      <div className="mb-3 my-5">
         <label htmlFor="email" className="form-label">
           Email address
         </label>
@@ -67,7 +71,9 @@ const Login = () => {
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
+    <Link className="btn btn-primary mx-2" to="/signup" role="button">SignUp</Link>
     </form>
+    </div>
   );
 };
 

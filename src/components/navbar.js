@@ -1,15 +1,15 @@
 import React,{useEffect} from 'react'
+import { useHistory } from 'react-router-dom';
 import {Link, useLocation} from "react-router-dom";
 
-function Navbar(props) {
-    const location = useLocation();
-    useEffect(() => {
-     console.log(location.pathname);
-    }, [location]);
+function Navbar() {
+ 
  
   
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <>
+         {/* <nav className="navbar navbar-expand-lg" style={{background:'none'}}> */}
+        {/*
   <div className="container-fluid">
     <Link className="navbar-brand" to="/">Navbar</Link>
     <button className="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +26,16 @@ function Navbar(props) {
         </ul>
     </div>
   </div>
-  <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
-  <Link className="btn btn-primary mx-2" to="/signup" role="button">SignUp</Link>
+  
 </nav>
+*/}
+        {/* { */}
+        {/* !(localStorage.getItem('token'))?<form className='d-flex'>
+   <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+   <Link className="btn btn-primary mx-2" to="/signup" role="button">SignUp</Link>
+   </form>:<button onClick={handleLogout} className="btn btn-primary">LogOut</button> */}
+  {/* } */}
+  </>
     )
 }
 
