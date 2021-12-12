@@ -109,9 +109,9 @@ const SignUp = (props) => {
           />
         </div>
     
-        <Link type="submit" className="btn signUp">
+        <button type="submit" className="btn signUp">
           SignUp
-        </Link>
+        </button>
       </form>
 
     </div>
