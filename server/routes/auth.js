@@ -7,7 +7,10 @@ const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 
 const fetchuser = require("../middleware/fetchuser");
-const JWT_SECRET = "Thisisainotebookapp";
+
+require("dotenv").config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Route-1 Create user
 router.post(
