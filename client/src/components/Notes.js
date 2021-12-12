@@ -39,7 +39,7 @@ function Notes(props) {
   return (
     <>
       <AddNote />
-
+<div className="container">
       <button
         ref={ref}
         type="button"
@@ -135,6 +135,7 @@ function Notes(props) {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div className="row my-5">
         <h2 className="text-center">Your Notes</h2>

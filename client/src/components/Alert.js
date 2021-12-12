@@ -11,7 +11,9 @@ export default function Alert(props) {
     }
     return (
         <>
-        <div style={{height:'20px'}} 
+        <div style={{height:'50px',
+        position:'fixed',
+        width:'100%'}} 
         // className='fixed-top'
         >
        {props.alert && <div class={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">

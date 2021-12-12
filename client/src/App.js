@@ -1,6 +1,5 @@
 
 import './App.css';
-import Navbar from './components/Navbar';
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,7 +29,6 @@ function App() {
     <>
     <NoteState showAlert={showAlert}>
      <Router>
-      <Navbar/>
       <Alert alert={alert}/>
       <div className="container">
      <Switch>

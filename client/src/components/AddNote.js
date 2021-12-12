@@ -2,7 +2,7 @@ import React, { useContext, useState,useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import notecontext from "../context/notes/noteContext";
 import { useHistory } from 'react-router-dom';
-
+import "../css/Note.css"
 
 const AddNote = () => {
   const context = useContext(notecontext);
@@ -29,7 +29,11 @@ const AddNote = () => {
 
   return (
     <div className="container my-3">
-      <button className="btn btn-primary mx-2" onClick={handleLogout}>LogOut</button>
+      <i class="fas fa-sign-out-alt" 
+        id="log"
+         data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="LogOut" onClick={handleLogout}></i>
       <h2>Add Notes</h2>
       <form className="my-3">
        
@@ -80,7 +84,7 @@ const AddNote = () => {
           disabled={note.title.length<3 || note.description.length<8}
             type="submit"
             onClick={handleClick}
-            className="btn btn-primary"
+            className="btn add"
           >Add Note
           </button>
     

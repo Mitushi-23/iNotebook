@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../css/Signup.css"
+// import "../css/Login.css";
+
 
 const SignUp = (props) => {
 
@@ -39,8 +42,17 @@ const SignUp = (props) => {
     };
 
   return (
+    <>
     <div className="container">
+      <div className="contain">
+      {/* <Link className="btn btn-primary mx-2" to="/" role="button">Login</Link> */}
       <h2 className="text-center my-3">Sign Up to continue to iNotebook</h2>
+      <Link class="fas fa-sign-in-alt" 
+      id="sign"
+         data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Login" to="/"></Link>
+      </div>
       <form onSubmit={handleSubmit}>
       <div className="mb-3 my-5">
           <label htmlFor="name" className="form-label">
@@ -96,13 +108,14 @@ const SignUp = (props) => {
             minLength={5} required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-    <Link className="btn btn-primary mx-2" to="/" role="button">Login</Link>
+    
+        <Link type="submit" className="btn signUp">
+          SignUp
+        </Link>
       </form>
 
     </div>
+    </>
   );
 };
 
