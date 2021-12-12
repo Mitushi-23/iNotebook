@@ -5,11 +5,11 @@
 }
 #delete {
   position: absolute;
-  right: 4%;
+  right: 14px;
 }
 #edit {
   position: absolute;
-  right: 8%;
+  right: 40px;
 }
 .notes {
   display: flex;
