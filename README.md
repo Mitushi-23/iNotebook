@@ -40,4 +40,15 @@ Runs the back-end server app in the development mode.<br>
 Open [http://localhost:5000](http://localhost:8000) to view it in the browser. Please note that the server requires an active instance of the **MongoDB database**. Either provide a *MongoDB atlas* link in the `URI` environment variable, or use a local database, by placing its URI in the same.
 
 ---
+## Application Screenshots
+
+### Login Page
+![Screenshot_20211213_153045](https://user-images.githubusercontent.com/83106116/145800715-9d481472-882f-475f-be67-dd1b2eb07cab.png)
+
+### SignUp page
+![Screenshot_20211213_153127](https://user-images.githubusercontent.com/83106116/145801069-75dfe31d-cd0a-48ac-982e-d42b8293807b.png)
+
+### iNotebook
+![Screenshot_20211213_153000](https://user-images.githubusercontent.com/83106116/145801158-8865784f-ac1c-415f-bbee-b591bfb47b3c.png)
+
 
