@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom';
 import "../css/Note.css"
 
 const AddNote = () => {
+
+
+
   const context = useContext(notecontext);
   const { addNote } = context;
   const [note, setnote] = useState({ title: "", description: "", tag: "" });

@@ -13,11 +13,21 @@ const SignUp = (props) => {
       setcredentials({ ...credentials, [e.target.name]: e.target.value });
     };
   
+const myFunction=()=>{
+  let x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       setcredentials({ name:"",email: "", password: "",cpassword: "" });
 
-       const {name, email, password} = credentials ;
+       const {name, email, password, cpassword} = credentials ;
+
 
       const response = await fetch("http://localhost:5000/api/auth/createuser", {
         method: "POST",
@@ -28,6 +38,8 @@ const SignUp = (props) => {
       });
       const json = await response.json();
       console.log(json);
+      if(password === cpassword)
+      {
       if(json.success)
     {
       // Redirect
@@ -35,6 +47,11 @@ const SignUp = (props) => {
       props.showAlert(": Account created successfully","success");
       history.push("/home")
     }
+    else
+    {
+      props.showAlert(": Please type same password","danger");
+    }
+  }
     else
     {
       props.showAlert(": Sorry the user already exist","danger");
@@ -90,10 +107,12 @@ const SignUp = (props) => {
             type="password"
             className="form-control"
             id="password"
+            
             onChange={onChange}
             name="password"
             minLength={5} required
           />
+          <input type="checkbox" onclick={myFunction}></input>
         </div>
         <div className="mb-3">
           <label htmlFor="cpassword" className="form-label">

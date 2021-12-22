@@ -7,7 +7,12 @@ AOS.init({
   duration: 1200,
 });
 
+
 const NoteItem = (props) => {
+
+
+
+  
   const context = useContext(notecontext);
   const { deleteNote } = context;
   const { note,updateNote } = props;

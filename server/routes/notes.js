@@ -3,6 +3,19 @@ const router = express.Router();
 const Note = require("../models/Note");
 const fetchuser = require("../middleware/fetchuser");
 const { body, validationResult } = require("express-validator");
+const User = require("../models/User");
+
+
+router.get("/fetchname", fetchuser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    res.json(user.name);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 
 // Route-1 Fetch all notes
 router.get("/fetchallnotes", fetchuser, async (req, res) => {
@@ -96,4 +109,11 @@ router.put(
         res.status(500).send("Internal Server Error");
       }
     })
+
+
+
+    
+
+
+
 module.exports = router;
